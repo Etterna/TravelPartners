@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TravelPartners.Models.UserResponseModel>
+
+@{
+    ViewBag.Title = "Users Management Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+
+<button class="btn btn-default" style="margin: 2px;" onclick="location.href='@Url.Action("Create", "Users" )'">Create User</button>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(c => user.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(c => user.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(c => user.Email)
+            </td>
+            <td>
+                @Html.ActionLink("View", "Details", new { userId = user.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { userId = user.Id })
+            </td>
+        </tr>
+    }
+</table>
