@@ -10,8 +10,8 @@ namespace TravelPartners.AutomapperProfiles
     {
         public ModelProfile()
         {
-            CreateMap<UserRequestModel, UserEntity>(MemberList.Source)
-                .ForMember("Id", opt => Guid.NewGuid());
+            CreateMap<UserRequestModel, UserEntity>(MemberList.Destination)
+                .ForMember(dest => dest.Id, opts => opts.MapFrom(src => Guid.NewGuid()));
             CreateMap<UserEntity, UserResponseModel>(MemberList.Destination);
             CreateMap<List<UserEntity>, List<UserResponseModel>>();
         }

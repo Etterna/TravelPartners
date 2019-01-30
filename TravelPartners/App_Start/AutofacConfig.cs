@@ -13,6 +13,8 @@ namespace TravelPartners.App_Start
         {
             var builder = new ContainerBuilder();
 
+            // Usually the type Repository will be encapsulated in Repository module and this module will be registered instead of the type.
+            // From the outside will be available only IRepository interface.
             var connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             builder.RegisterType<Repository>().As<IRepository>()
                 .WithParameter("connectionString", connectionString);

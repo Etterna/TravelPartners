@@ -8,7 +8,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Update", "User"))
+@using (Html.BeginForm("Update", "User", new { userId = Model.Id, Model}))
 {
     @Html.AntiForgeryToken()
 

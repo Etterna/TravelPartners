@@ -11,6 +11,7 @@ namespace TravelPartners.Controllers
     {
         private readonly IRepository _repository;
 
+        // The repository used here for simplicity, usually we will have a service which will contain a business logic and IRepository will be there.
         public UserController(IRepository repository)
         {
             _repository = repository;
@@ -50,7 +51,7 @@ namespace TravelPartners.Controllers
             return View("Edit", responseModel);
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update(Guid userId, UserRequestModel changed)
         {
